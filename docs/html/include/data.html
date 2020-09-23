@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Data &mdash; gencou  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Argument Knowledge Graph" href="design_akg.html" />
+    <link rel="prev" title="Overall design" href="design.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> gencou
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">Exemplary results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="design.html">Overall design</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#statistics">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="design_akg.html">Argument Knowledge Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_frame.html">FrameBert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_seqtoseq.html">Seq2Seq Model</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../source/interface.html">interface module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/akglib.html">akglib module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/akgcreate.html">akgcreate module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_bert_interface.html">frame_bert_interface module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_bert_prepare_data.html">frame_bert_prepare_data module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_change_csv.html">frame_change_csv module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_split_corpus.html">frame_split_corpus module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/seqtoseq_train_model.html">seqtoseq_train_model module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/seqtoseq_load_model.html">seqtoseq_load_model module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">gencou</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/include/data.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data">
+<h1>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Assignee:</th><td class="field-body">Jan Stanicki</td>
+</tr>
+</tbody>
+</table>
+<p>For the creation of the argument knowledge graph, we use the Args.me Corpus <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The args.me corpus is a project by Yamen Ajjour, Henning Wachsmuth, Johannes Kiesel, Martin Potthast, Matthias Hagen and Benno Stein.
+It comprises 387 606 arguments crawled from four debate portals in the middle of 2019. The debate portals are Debatewise, IDebate.org, Debatepedia, and Debate.org. The arguments are extracted using heuristics that are designed for each debate portal. The corpus consists of one JSON-file.
+The average count of arguments per debate in our datasetamounts to 6.5. Most debates include 6 to 10 arguments. Only a few debates reach more than 20 arguments.</p>
+</div>
+<div class="section" id="statistics">
+<h2>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>387606 arguments from 59637 debates</li>
+<li>count of arguments total: 387606</li>
+<li>count of pro stance: 200099</li>
+<li>count of con stance: 187507</li>
+<li>count of debates: 59637</li>
+</ul>
+</div>
+<div class="section" id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<p>Each argument in the corpus contains the following information:</p>
+<ul class="simple">
+<li>premises<ul>
+<li>text: number of sentences</li>
+<li>stance: “PRO” / “CON”</li>
+</ul>
+</li>
+<li>context<ul>
+<li>sourceId: e.g. “c67482ba-2019-04-18T13:32:05Z”</li>
+<li>previousArgumentInSourceId: same as sourceId</li>
+<li>acquisitionTime: “2019-04-18T13:32:05Z” year-month-dayThours:minutes:secondsLetter</li>
+<li>discussionTitle: string of topic, long</li>
+<li>sourceTitle: Type of Debate | discussionTitle | url of source page</li>
+<li>sourceUrl: concrete url to argument</li>
+<li>nextArgumentInSourceId: sourceId of next argument</li>
+<li>id: e.g. “c67482ba-2019-04-18T13:32:05Z-00000-000”</li>
+</ul>
+</li>
+<li>conclusion: “string”, short sentence or topic</li>
+</ul>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;premises&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;My opponent forfeited every round. None of my arguments were answered. I don</span><span class="se">\u2019</span><span class="s2">t like the idea of winning by default, but here we are.Tule: it</span><span class="se">\u2019</span><span class="s2">s good for students to get involved and address big issues like teen pregnancy. You need to be able to answer arguments like mine and not simply prepare for an abstinence-only type of response. You should also be aware that, in the U.S., condoms may be sold to minors in ANY state. A retailer who says it is illegal to sell you them is, frankly, wrong.&quot;</span><span class="p">,</span>
+
+<span class="s2">&quot;stance&quot;</span><span class="p">:</span> <span class="s2">&quot;CON&quot;</span><span class="p">}],</span>
+
+<span class="s2">&quot;context&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;sourceId&quot;</span><span class="p">:</span> <span class="s2">&quot;c67482ba-2019-04-18T13:32:05Z&quot;</span><span class="p">,</span> <span class="s2">&quot;previousArgumentInSourceId&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;acquisitionTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2019-04-18T13:32:05Z&quot;</span><span class="p">,</span> <span class="s2">&quot;discussionTitle&quot;</span><span class="p">:</span> <span class="s2">&quot;Contraceptive Forms for High School Students&quot;</span><span class="p">,</span> <span class="s2">&quot;sourceTitle&quot;</span><span class="p">:</span> <span class="s2">&quot;Debate Argument: Contraceptive Forms for High School Students | Debate.org&quot;</span><span class="p">,</span> <span class="s2">&quot;sourceUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.debate.org/debates/Contraceptive-Forms-for-High-School-Students/1/&quot;</span><span class="p">,</span> <span class="s2">&quot;nextArgumentInSourceId&quot;</span><span class="p">:</span> <span class="s2">&quot;c67482ba-2019-04-18T13:32:05Z-00001-000&quot;</span><span class="p">},</span> <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c67482ba-2019-04-18T13:32:05Z-00000-000&quot;</span><span class="p">,</span>
+
+<span class="s2">&quot;conclusion&quot;</span><span class="p">:</span> <span class="s2">&quot;Contraceptive Forms for High School Students&quot;</span><span class="p">},</span>
+</pre></div>
+</div>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Ajjour, Y., Wachsmuth, H., Kiesel, J., Potthast, M., Hagen, M., and Stein, B. (2019b).  Data Acquisition for Argument Search: The args.me corpus.  In KI 2019. Springer.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="design_akg.html" class="btn btn-neutral float-right" title="Argument Knowledge Graph" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="design.html" class="btn btn-neutral float-left" title="Overall design" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Julius Unverfehrt, Jan Stanicki, Oliver Zobel, Michael Zadikowitsch
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

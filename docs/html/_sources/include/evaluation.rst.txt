@@ -1,0 +1,40 @@
+Evaluation
+==========
+
+:Assignee: Oliver Zobel
+
+Survey
+------
+Google Forms Survey to evaluate our generated counterarguments
+
+* Ask about 20 people
+* Rate certain characteristics of counterarguments
+
+Content
+-------
+
+**Rating one c_arg given arg, c_arg**
+
+- grammar: scale 1-5
+- logic: scale 1-5
+- relevance: scale 1-5
+- ethics: scale 1-5
+- tone: scale 1-5
+- opinion vs fact: scale 1-5
+- convincingness: scale 1-5
+- other criteria: open question
+
+**Ranking three c_args given one arg**
+
+- are there other, possibly better c_args: open question
+
+**Comparing two c_args**
+
+- logic: c_arg1 or c_arg2
+    reason: open question
+
+- relevance: c_arg1 or c_arg2
+    reason: open question
+
+- convincingness: c_arg1 or c_arg2
+    reason: open question

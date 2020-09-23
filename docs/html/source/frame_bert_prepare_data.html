@@ -1,0 +1,312 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>frame_bert_prepare_data module &mdash; gencou  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="frame_change_csv module" href="frame_change_csv.html" />
+    <link rel="prev" title="frame_bert_interface module" href="frame_bert_interface.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> gencou
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../include/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../include/results.html">Exemplary results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../include/evaluation.html">Evaluation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../include/design.html">Overall design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../include/data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../include/design_akg.html">Argument Knowledge Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../include/design_frame.html">FrameBert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../include/design_seqtoseq.html">Seq2Seq Model</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="interface.html">interface module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="akglib.html">akglib module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="akgcreate.html">akgcreate module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame_bert_interface.html">frame_bert_interface module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">frame_bert_prepare_data module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame_change_csv.html">frame_change_csv module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame_split_corpus.html">frame_split_corpus module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seqtoseq_train_model.html">seqtoseq_train_model module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seqtoseq_load_model.html">seqtoseq_load_model module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">gencou</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>frame_bert_prepare_data module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/source/frame_bert_prepare_data.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-frame_bert_prepare_data">
+<span id="frame-bert-prepare-data-module"></span><h1>frame_bert_prepare_data module<a class="headerlink" href="#module-frame_bert_prepare_data" title="Permalink to this headline">¶</a></h1>
+<p>Transforms csv-files to tsv-files and includes some helper classes and the function to convert argument texts to feature vectors.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Jan Stanicki</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="frame_bert_prepare_data.DataProcessor">
+<em class="property">class </em><code class="descclassname">frame_bert_prepare_data.</code><code class="descname">DataProcessor</code><a class="headerlink" href="#frame_bert_prepare_data.DataProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for data converters for sequence classification data sets.</p>
+<dl class="method">
+<dt id="frame_bert_prepare_data.DataProcessor.get_dev_examples">
+<code class="descname">get_dev_examples</code><span class="sig-paren">(</span><em>data_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#frame_bert_prepare_data.DataProcessor.get_dev_examples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a collection of <a href="#id1"><span class="problematic" id="id2">`</span></a>InputExample`s for the dev set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="frame_bert_prepare_data.DataProcessor.get_labels">
+<code class="descname">get_labels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frame_bert_prepare_data.DataProcessor.get_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the list of labels for this data set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="frame_bert_prepare_data.DataProcessor.get_train_examples">
+<code class="descname">get_train_examples</code><span class="sig-paren">(</span><em>data_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#frame_bert_prepare_data.DataProcessor.get_train_examples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a collection of <a href="#id3"><span class="problematic" id="id4">`</span></a>InputExample`s for the train set.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="frame_bert_prepare_data.InputExample">
+<em class="property">class </em><code class="descclassname">frame_bert_prepare_data.</code><code class="descname">InputExample</code><span class="sig-paren">(</span><em>guid</em>, <em>text_a</em>, <em>text_b=None</em>, <em>label=None</em><span class="sig-paren">)</span><a class="headerlink" href="#frame_bert_prepare_data.InputExample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A single training/test example for simple sequence classification.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="frame_bert_prepare_data.InputFeatures">
+<em class="property">class </em><code class="descclassname">frame_bert_prepare_data.</code><code class="descname">InputFeatures</code><span class="sig-paren">(</span><em>input_ids</em>, <em>input_mask</em>, <em>segment_ids</em>, <em>label_id</em><span class="sig-paren">)</span><a class="headerlink" href="#frame_bert_prepare_data.InputFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A single set of features of data.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="frame_bert_prepare_data.MultiClassificationProcessor">
+<em class="property">class </em><code class="descclassname">frame_bert_prepare_data.</code><code class="descname">MultiClassificationProcessor</code><a class="headerlink" href="#frame_bert_prepare_data.MultiClassificationProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#frame_bert_prepare_data.DataProcessor" title="frame_bert_prepare_data.DataProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">frame_bert_prepare_data.DataProcessor</span></code></a></p>
+<p>Processor for multi classification dataset.</p>
+<dl class="method">
+<dt id="frame_bert_prepare_data.MultiClassificationProcessor.get_dev_examples">
+<code class="descname">get_dev_examples</code><span class="sig-paren">(</span><em>data_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#frame_bert_prepare_data.MultiClassificationProcessor.get_dev_examples" title="Permalink to this definition">¶</a></dt>
+<dd><p>See base class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="frame_bert_prepare_data.MultiClassificationProcessor.get_labels">
+<code class="descname">get_labels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#frame_bert_prepare_data.MultiClassificationProcessor.get_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>See base class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="frame_bert_prepare_data.MultiClassificationProcessor.get_train_examples">
+<code class="descname">get_train_examples</code><span class="sig-paren">(</span><em>data_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#frame_bert_prepare_data.MultiClassificationProcessor.get_train_examples" title="Permalink to this definition">¶</a></dt>
+<dd><p>See base class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="frame_bert_prepare_data.convert_example_to_feature">
+<code class="descclassname">frame_bert_prepare_data.</code><code class="descname">convert_example_to_feature</code><span class="sig-paren">(</span><em>example_row</em><span class="sig-paren">)</span><a class="headerlink" href="#frame_bert_prepare_data.convert_example_to_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts an argument example to a feature vector.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>example_row</strong> (<em>tuple</em>) – tuple of example object, label_map, max_seq_length, tokenizer and output_mode needed for preprocessing</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="frame_change_csv.html" class="btn btn-neutral float-right" title="frame_change_csv module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="frame_bert_interface.html" class="btn btn-neutral float-left" title="frame_bert_interface module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Julius Unverfehrt, Jan Stanicki, Oliver Zobel, Michael Zadikowitsch
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

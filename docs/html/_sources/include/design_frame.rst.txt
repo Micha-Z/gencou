@@ -1,0 +1,88 @@
+FrameBert
+=========
+
+:Assignee: Jan Stanicki
+
+Outline
+-------
+For the training of the frame classifier, the webis-argument-framing-19 [1]_ corpus is used. First, we need less frames, so we cluster the similar specific frames into a more general frame. Then we write the new frames in the corpus and split it in a train and test file.
+Next the model is trained and then evaluated on the test corpus.
+Ultimately a function for integration is written which predicts the frame for a single argument.
+
+Preprocessing
+-------------
+
+The following modules & functions are used:
+
+:mod:`frame_cluster_frames`
+
+:read_webis(): reads train corpus and saves the arguments and the respective frame in a list ([[frame1, arg1], [frame2, arg2], [frame2, arg3],...]).
+
+:preprocessing(): removes stopwords and punctuation from arguments.
+
+:vectorize_arguments(): vectorizes arguments with TF-IDF, then predicts a cluster for every argument with KMeans.
+
+:frameDict(): creates a dict with frame as key and for every argument belonging to the frame the predicted cluster is appended to a list (frame: [clus1, clus2, clus1]).
+
+:most_common_cluster(): takes the frameDict and determines the most frequent cluster by using counter.most_common(). The key is the frame and the value is a tuple consisting of the most frequent cluster and the frequency ({frame: (clus1, 4)}).
+
+:create_cluster_sets(): A set for every cluster is created. Every frame gets added to the set which was predicted the most frequent cluster. These sets are saved in a pickle-file.
+
+:mod:`frame_change_csv`
+
+:load_cluster(): loads the clusters from pickle-file.
+
+:write_in_csv(): replaces frame annotations with cluster numbers. Some clusters are combined because they contain very similar frames. In the end there are 7 different general frames
+
+*structure:* cluster = general frame name ==> how it's annotated in the corpus::
+
+  cluster0 = rights ==> 0
+  cluster1, cluster2 = international politics ==> 1
+  cluster3 = individual rights ==> 2
+  cluster4 = education ==> 3
+  cluster5, cluster6, cluster7 = climate change ==> 4
+  cluster8 = economics ==> 5
+  cluster9 = health care ==> 6
+
+:mod:`frame_split_corpus`
+
+:train_test(): splits the corpus in train (80%) and test (20%) set.
+
+BERT model
+----------
+
+:mod:`frame_bert_prepare_data`
+
+Takes the train and test csv-files and transforms it to tsv-files which is standard working with BERT [2]_ models.
+
+:InputExample: class that constructs an InputExample for further processing.
+:DataProcessor: base class that collects the InputExamples from the train and test set.
+:MultiClassificationProcessor: class that processes multi classification dataset.
+:InputFeatures: class that defines the structure of a feature vector.
+:convert_example_to_feature(): converts an argument text to a feature vector.
+
+:mod:`frame_bert_train`
+
+:FrameBert: class that extends the BertForSequenceClassification model by a softmax layer.
+Creates needed directories if they don't exist. Then calls functions from frame_bert_prepare_data to process training data and feeds the model. Next the model is trained. By running this code, the model trains with 40 epochs.
+
+:mod:`frame_bert_eval`
+
+Equivalent to frame_bert_train but processes and uses the test set. Also it creates an evaluation file eval_results.txt.
+
+:mod:`frame_bert_interface`
+
+:classifiy_single_argument(): function that takes an argument text and processes it to a feature vector, then takes fine-tuned model to predict a frame.
+
+Lessons learned
+---------------
+
+The first big problem we encountered was the choice of a training corpus for training the frame classification system. The only fitting corpus we found was the Webis-argument-framing-19 dataset which had more than 1500 different annotated frames. So to make this corpus usable we needed under 20 frames which we tried achieving by clustering similar frames. The first attempt was embedding the frame annotations (e.g. 'economics', 'taxes',...) with BERT but these clusters where completely random, so we discarded this approach.
+The second approach was vectorizing the arguments with TF-IDF, so we got a predicted cluster for every single argument. To assign a frame to a cluster, we needed to find every argument annotated with the same frame and look for the most common predicted cluster ( frame: [arg1->clus1, arg2->clus2, arg3->clus1, arg4->clus3] ==> frame: clus1). There were several problems quite difficult to solve. Firstly, if a frame had not one cluster which was the most frequent one but there were several most frequent ones. We used the most_common() function from collections which then selects a random one. This adds a bit of noise to the data, but no other option came to mind.
+Second, the final distribution of clusters was even more uneven than thought. That explains the poor performance of the BERT model. Cluster2 is a pretty big one which contains very frequent frames, so very much of the annotation are cluster 2. Maybe clustering similar frames manually would have been a better idea but the way it is now isn't suitable for training.
+This project being the first one using the cluster of the Institute of Computational Linguistics in Heidelberg was also a big challenge to organize and move the necessary data. For this, more time would have avoided some stress in organization.
+It was also the first time working with a neural network, which was very interesting getting to know it. Also it was very rewarding when it finally starts working. Preparing the training corpus took a long time unfortunately, so the actual frame classifier with BERT had to work pretty fast. More time for fine-tuning and improving this model or time to experiment with different setups and parameters would have been beneficial. When looking in the eval_results.txt it stands out that the measures all yield the same value. This indicates that it's not working properly which probably is the consequence of the uneven distribution of frames.
+Altogether it was a project with a lot new elements to work with, which was challenging but also we learned a lot by dealing with the problems.
+
+.. [1] https://webis.de/data/webis-argument-framing-19.html
+.. [2] https://github.com/maknotavailable/pytorch-pretrained-BERT

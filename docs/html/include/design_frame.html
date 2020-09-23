@@ -1,0 +1,368 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FrameBert &mdash; gencou  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Seq2Seq Model" href="design_seqtoseq.html" />
+    <link rel="prev" title="Argument Knowledge Graph" href="design_akg.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> gencou
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">Exemplary results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="design.html">Overall design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_akg.html">Argument Knowledge Graph</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">FrameBert</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#outline">Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#preprocessing">Preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bert-model">BERT model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lessons-learned">Lessons learned</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="design_seqtoseq.html">Seq2Seq Model</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../source/interface.html">interface module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/akglib.html">akglib module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/akgcreate.html">akgcreate module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_bert_interface.html">frame_bert_interface module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_bert_prepare_data.html">frame_bert_prepare_data module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_change_csv.html">frame_change_csv module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_split_corpus.html">frame_split_corpus module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/seqtoseq_train_model.html">seqtoseq_train_model module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/seqtoseq_load_model.html">seqtoseq_load_model module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">gencou</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>FrameBert</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/include/design_frame.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="framebert">
+<h1>FrameBert<a class="headerlink" href="#framebert" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Assignee:</th><td class="field-body">Jan Stanicki</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="outline">
+<h2>Outline<a class="headerlink" href="#outline" title="Permalink to this headline">¶</a></h2>
+<p>For the training of the frame classifier, the webis-argument-framing-19 <a class="footnote-reference" href="#id3" id="id1">[1]</a> corpus is used. First, we need less frames, so we cluster the similar specific frames into a more general frame. Then we write the new frames in the corpus and split it in a train and test file.
+Next the model is trained and then evaluated on the test corpus.
+Ultimately a function for integration is written which predicts the frame for a single argument.</p>
+</div>
+<div class="section" id="preprocessing">
+<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>The following modules &amp; functions are used:</p>
+<p><a class="reference internal" href="../source/frame_cluster_frames.html#module-frame_cluster_frames" title="frame_cluster_frames"><code class="xref py py-mod docutils literal notranslate"><span class="pre">frame_cluster_frames</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">read_webis():</th><td class="field-body">reads train corpus and saves the arguments and the respective frame in a list ([[frame1, arg1], [frame2, arg2], [frame2, arg3],…]).</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">preprocessing():</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">removes stopwords and punctuation from arguments.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">vectorize_arguments():</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">vectorizes arguments with TF-IDF, then predicts a cluster for every argument with KMeans.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">frameDict():</th><td class="field-body">creates a dict with frame as key and for every argument belonging to the frame the predicted cluster is appended to a list (frame: [clus1, clus2, clus1]).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">most_common_cluster():</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">takes the frameDict and determines the most frequent cluster by using counter.most_common(). The key is the frame and the value is a tuple consisting of the most frequent cluster and the frequency ({frame: (clus1, 4)}).</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">create_cluster_sets():</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">A set for every cluster is created. Every frame gets added to the set which was predicted the most frequent cluster. These sets are saved in a pickle-file.</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference internal" href="../source/frame_change_csv.html#module-frame_change_csv" title="frame_change_csv"><code class="xref py py-mod docutils literal notranslate"><span class="pre">frame_change_csv</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">load_cluster():</th><td class="field-body">loads the clusters from pickle-file.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">write_in_csv():</th><td class="field-body">replaces frame annotations with cluster numbers. Some clusters are combined because they contain very similar frames. In the end there are 7 different general frames</td>
+</tr>
+</tbody>
+</table>
+<p><em>structure:</em> cluster = general frame name ==&gt; how it’s annotated in the corpus:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cluster0</span> <span class="o">=</span> <span class="n">rights</span> <span class="o">==&gt;</span> <span class="mi">0</span>
+<span class="n">cluster1</span><span class="p">,</span> <span class="n">cluster2</span> <span class="o">=</span> <span class="n">international</span> <span class="n">politics</span> <span class="o">==&gt;</span> <span class="mi">1</span>
+<span class="n">cluster3</span> <span class="o">=</span> <span class="n">individual</span> <span class="n">rights</span> <span class="o">==&gt;</span> <span class="mi">2</span>
+<span class="n">cluster4</span> <span class="o">=</span> <span class="n">education</span> <span class="o">==&gt;</span> <span class="mi">3</span>
+<span class="n">cluster5</span><span class="p">,</span> <span class="n">cluster6</span><span class="p">,</span> <span class="n">cluster7</span> <span class="o">=</span> <span class="n">climate</span> <span class="n">change</span> <span class="o">==&gt;</span> <span class="mi">4</span>
+<span class="n">cluster8</span> <span class="o">=</span> <span class="n">economics</span> <span class="o">==&gt;</span> <span class="mi">5</span>
+<span class="n">cluster9</span> <span class="o">=</span> <span class="n">health</span> <span class="n">care</span> <span class="o">==&gt;</span> <span class="mi">6</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../source/frame_split_corpus.html#module-frame_split_corpus" title="frame_split_corpus"><code class="xref py py-mod docutils literal notranslate"><span class="pre">frame_split_corpus</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">train_test():</th><td class="field-body">splits the corpus in train (80%) and test (20%) set.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="bert-model">
+<h2>BERT model<a class="headerlink" href="#bert-model" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../source/frame_bert_prepare_data.html#module-frame_bert_prepare_data" title="frame_bert_prepare_data"><code class="xref py py-mod docutils literal notranslate"><span class="pre">frame_bert_prepare_data</span></code></a></p>
+<p>Takes the train and test csv-files and transforms it to tsv-files which is standard working with BERT <a class="footnote-reference" href="#id4" id="id2">[2]</a> models.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">InputExample:</th><td class="field-body">class that constructs an InputExample for further processing.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">DataProcessor:</th><td class="field-body">base class that collects the InputExamples from the train and test set.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">MultiClassificationProcessor:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">class that processes multi classification dataset.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">InputFeatures:</th><td class="field-body">class that defines the structure of a feature vector.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">convert_example_to_feature():</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">converts an argument text to a feature vector.</td>
+</tr>
+</tbody>
+</table>
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">frame_bert_train</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">FrameBert:</th><td class="field-body">class that extends the BertForSequenceClassification model by a softmax layer.</td>
+</tr>
+</tbody>
+</table>
+<p>Creates needed directories if they don’t exist. Then calls functions from frame_bert_prepare_data to process training data and feeds the model. Next the model is trained. By running this code, the model trains with 40 epochs.</p>
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">frame_bert_eval</span></code></p>
+<p>Equivalent to frame_bert_train but processes and uses the test set. Also it creates an evaluation file eval_results.txt.</p>
+<p><a class="reference internal" href="../source/frame_bert_interface.html#module-frame_bert_interface" title="frame_bert_interface"><code class="xref py py-mod docutils literal notranslate"><span class="pre">frame_bert_interface</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">classifiy_single_argument():</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">function that takes an argument text and processes it to a feature vector, then takes fine-tuned model to predict a frame.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lessons-learned">
+<h2>Lessons learned<a class="headerlink" href="#lessons-learned" title="Permalink to this headline">¶</a></h2>
+<p>The first big problem we encountered was the choice of a training corpus for training the frame classification system. The only fitting corpus we found was the Webis-argument-framing-19 dataset which had more than 1500 different annotated frames. So to make this corpus usable we needed under 20 frames which we tried achieving by clustering similar frames. The first attempt was embedding the frame annotations (e.g. ‘economics’, ‘taxes’,…) with BERT but these clusters where completely random, so we discarded this approach.
+The second approach was vectorizing the arguments with TF-IDF, so we got a predicted cluster for every single argument. To assign a frame to a cluster, we needed to find every argument annotated with the same frame and look for the most common predicted cluster ( frame: [arg1-&gt;clus1, arg2-&gt;clus2, arg3-&gt;clus1, arg4-&gt;clus3] ==&gt; frame: clus1). There were several problems quite difficult to solve. Firstly, if a frame had not one cluster which was the most frequent one but there were several most frequent ones. We used the most_common() function from collections which then selects a random one. This adds a bit of noise to the data, but no other option came to mind.
+Second, the final distribution of clusters was even more uneven than thought. That explains the poor performance of the BERT model. Cluster2 is a pretty big one which contains very frequent frames, so very much of the annotation are cluster 2. Maybe clustering similar frames manually would have been a better idea but the way it is now isn’t suitable for training.
+This project being the first one using the cluster of the Institute of Computational Linguistics in Heidelberg was also a big challenge to organize and move the necessary data. For this, more time would have avoided some stress in organization.
+It was also the first time working with a neural network, which was very interesting getting to know it. Also it was very rewarding when it finally starts working. Preparing the training corpus took a long time unfortunately, so the actual frame classifier with BERT had to work pretty fast. More time for fine-tuning and improving this model or time to experiment with different setups and parameters would have been beneficial. When looking in the eval_results.txt it stands out that the measures all yield the same value. This indicates that it’s not working properly which probably is the consequence of the uneven distribution of frames.
+Altogether it was a project with a lot new elements to work with, which was challenging but also we learned a lot by dealing with the problems.</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://webis.de/data/webis-argument-framing-19.html">https://webis.de/data/webis-argument-framing-19.html</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="https://github.com/maknotavailable/pytorch-pretrained-BERT">https://github.com/maknotavailable/pytorch-pretrained-BERT</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="design_seqtoseq.html" class="btn btn-neutral float-right" title="Seq2Seq Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="design_akg.html" class="btn btn-neutral float-left" title="Argument Knowledge Graph" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Julius Unverfehrt, Jan Stanicki, Oliver Zobel, Michael Zadikowitsch
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

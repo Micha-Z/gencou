@@ -1,0 +1,7 @@
+frame\_cluster\_frames module
+=============================
+
+.. automodule:: frame_cluster_frames
+    :members:
+    :undoc-members:
+    :show-inheritance:

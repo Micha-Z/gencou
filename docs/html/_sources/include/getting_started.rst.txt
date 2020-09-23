@@ -1,0 +1,127 @@
+Getting Started
+===============
+
+Requirements
+------------
+
+At least Python version 3.6.x is needed to run our system. Further, the following packages need to be existent:
+
+:python-igraph: provides the graph structure
+:neuralcoref: provides the co-references-resolving
+:allennlp: provides a supervised-openIE implementation, used for the information extraction from text
+:spacy: Version 2.1.0, needed by supervised-openIE
+:pytorch_pretrained_bert: contains a pytorch re-implementation of Google's TensorFlow repository for the BERT model
+
+* sklearn
+* progressbar2
+* torch
+* matplotlib
+* numpy
+* tools
+* tqdm
+* pandas
+* nltk.corpus
+
+To install the required packages, run::
+
+  $ pip install -r requirements.txt
+
+Make sure to have nltk.stopwords installed::
+
+  $ python3
+  >>> import nltk
+  >>> nltk.download("stopwords")
+
+Additionally make sure that the english language model from spacy is installed::
+
+  $ python -m spacy download en
+
+Usage of our pretrained model
+-----------------------------
+
+For using our system, start by running::
+
+  $ python3 interface.py
+
+This module includes both the graph and the frame classification.
+
+If *[1] batch* is chosen, the file *../data/arguments.txt* is loaded, which contains example arguments with their respective stance. Feel free to add or change arguments, but make sure that you keep the correct syntax::
+
+  argument (all sentences in one line)
+  stance
+  argument
+  ...
+
+To generate natural language from the found triples, execute :mod:`source/seqtoseq_load_model`,
+which prints the sentences to your terminal.
+Bring a few minutes at the start, the seq2seq model takes a while to initialize.
+
+This demo is trained with 15000 arguments from the args.me corpus.
+The system is meant to contain the whole corpus, but due to timing issues
+(creating only the graph on a cluster took over a week already) we weren't
+able to implement that yet. We hope that this sample suffices as proof of concept.
+
+Train yourself
+--------------
+
+Since our project is scattered in several parts by nature, we haven't yet found a convenient way to integrate an "all-in-one"
+training processing script. We try our best though to outline here the necessary steps to train our model.
+
+1. :ref:`akg`
+2. :ref:`fra`
+3. Train the seq2seq model (with data provided by the graph)
+
+.. _akg:
+
+Create the Argument Knowledge Graph
+-----------------------------------
+
+We recommend adjusting the :doc:`../source/akgcreate` script, which is commented and calls all necessary methods needed to create an
+argument knowledge graph. For further information on the AKG class, see :doc:`../source/akglib`
+
+Make sure to get your copy of the args.me corpus [1]_ (894.9 MB in JSON format). Put it in the folder *data/akg/*
+
+If using only the class, make sure to keep the following work order:
+
+1. Create the class (specify the path to your args.me corpus as parameter, if not *default*)
+2. Load the corpus :meth:`akglib.AKG.load_corpus`
+3. Process the corpus :meth:`akglib.AKG.process_arguments`
+4. Construct the graph :meth:`akglib.AKG.construct_graph`
+5. *optional* write the training data for the seq2seq model :meth:`akglib.AKG.write_seq2seq_train`
+
+At any point, save your data with the :meth:`akglib.AKG.save` method.
+
+.. _fra:
+
+Train FrameBert model
+---------------------
+
+First, :mod:`frame_cluster_frames` needs to be executed. Navigate to the directory and use the command::
+
+   python3 frame_cluster_frames.py
+
+Use this pattern for every mentioned file.
+This classifies the frames into 10 clusters.
+These classifications need to be updated in the training corpus with :mod:`frame_change_csv`.
+To split the corpus in a train and a test file, execute: :mod:`frame_split_corpus`.
+
+To further preprocess our data and generate tsv-files from the csv-files use :mod:`frame_bert_prepare_data`.
+It also contains the function to convert the argument texts into feature vectors.
+
+To start the training of our BERT fine-tuning model, execute :mod:`frame_bert_train`.
+By executing the file, the pretrained model (bert-base-cased) gets downloaded which is about 400mb.
+When the model is trained the files created are in *../data/frames/outputs/frames40ep/* .
+We have to zip the model with the command::
+
+  ~/data/frames/outputs/frames40ep/ tar cfvz frames40ep.tar.gz config.json pytorch_model.bin
+
+The zipped package needs to be moved to the directory *cache/*. Do that by executing::
+
+  cp data/frames/outputs/frames40ep/frames40ep.tar.gz data/frames/cache/
+
+For evaluating on the test set, use :mod:`frame_bert_eval`.
+
+The file :mod:`frame_bert_interface` contains the function to predict the frame of a single argument,
+which is used by the argument knowledge graph.
+
+.. [1] https://webis.de/data/args-me.html

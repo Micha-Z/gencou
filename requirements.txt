@@ -1,0 +1,14 @@
+python-igraph
+sklearn
+spacy==2.1.0
+neuralcoref
+allennlp
+progressbar2
+torch
+matplotlib
+numpy
+tools
+tqdm
+pytorch_pretrained_bert
+pandas
+nltk.corpus

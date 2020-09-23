@@ -1,0 +1,464 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>akglib module &mdash; gencou  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="akgcreate module" href="akgcreate.html" />
+    <link rel="prev" title="interface module" href="interface.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> gencou
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../include/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../include/results.html">Exemplary results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../include/evaluation.html">Evaluation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../include/design.html">Overall design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../include/data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../include/design_akg.html">Argument Knowledge Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../include/design_frame.html">FrameBert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../include/design_seqtoseq.html">Seq2Seq Model</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="interface.html">interface module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">akglib module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="akgcreate.html">akgcreate module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame_bert_interface.html">frame_bert_interface module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame_bert_prepare_data.html">frame_bert_prepare_data module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame_change_csv.html">frame_change_csv module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame_split_corpus.html">frame_split_corpus module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seqtoseq_train_model.html">seqtoseq_train_model module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seqtoseq_load_model.html">seqtoseq_load_model module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">gencou</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>akglib module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/source/akglib.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-akglib">
+<span id="akglib-module"></span><h1>akglib module<a class="headerlink" href="#module-akglib" title="Permalink to this headline">¶</a></h1>
+<p>Provides the class AKG, representing an argument knowledge graph with the methods
+needed to create and access it.</p>
+<p>The graph works with the args-me corpus but could be used with any corpus,
+small adjustments assumed.
+Further detail on how to use this class is provided in the Getting started section
+of the documentation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Julius Unverfehrt</td>
+</tr>
+<tr class="field-even field"><th class="field-name">version:</th><td class="field-body">0.9</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="akglib.AKG">
+<em class="property">class </em><code class="descclassname">akglib.</code><code class="descname">AKG</code><span class="sig-paren">(</span><em>corpus_path='../data/args-me.json'</em><span class="sig-paren">)</span><a class="headerlink" href="#akglib.AKG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class provides all methods needed to process the args-me corpus into
+an argument knowledge graph. Coreferences in the documents are resolved with
+neuralCoref, the information is extracted with supervised-openIE into triples:
+SUBJ-VERB-OBJ, where SUBJ and OBJ will be nodes in the graph, with VERB as edge.
+When put into the graph, similar nodes (cosine TF_IDF) are merged (only once per existing node,
+to prevent information loss).
+After creation, querys of argument + stance can be made, to recive matching
+triples that oppose the argument.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>corpus_path</strong> (<em>string</em>) – Path to the corpus (or sample), defaults to “../data/args-me.json”</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="akglib.AKG.construct_graph">
+<code class="descname">construct_graph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#akglib.AKG.construct_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterates over the processed corpus and adds the triples found by
+supervised-openIE to the igraph.</p>
+<p>If similarity (cosine tf-idf) to a existing node is detected, the nodes will be merged
+into the shorter one (only once per existing node, to restrict information loss).
+The merges are therefore memorized, which also improves runtime.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><strong>AttributeError</strong> – corpus not loaded previously and/or not processed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="akglib.AKG.get_cos_sims">
+<code class="descname">get_cos_sims</code><span class="sig-paren">(</span><em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#akglib.AKG.get_cos_sims" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aquires the tf-idf cosine similarites for a new node,
+respective to the nodes of all arguments in the graph. Returns a list with the similarities,
+the indices refering to the nodes indices of the graph.
+The new node is temporarily added to the graph, which prevents creating
+new lists every time a similarity check is made.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>arg</strong> (<em>string</em>) – one single node</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">similiarities</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list(float)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="akglib.AKG.get_counter_triples">
+<code class="descname">get_counter_triples</code><span class="sig-paren">(</span><em>query</em>, <em>stance</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#akglib.AKG.get_counter_triples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterates over the graph to identify similar nodes to the query.</p>
+<p>For the sake of runtime, we use a simple sequence match for that task,
+which is way more efficient than cosine similarity and yet yields comparable
+results.
+Triples in the neighborhood of identified nodes are estimated as qualified if their stance
+oposes the queries one.
+They are then sorted by the normalized scores of:</p>
+<ul class="simple">
+<li>respective similarity (cosine TF-IDF), assuming that good counter arguments are similar</li>
+<li>pagerank, assuming that a high pagerank hints to a meaningful node</li>
+<li>frames, assuming that good counterarguments are in the same frame</li>
+</ul>
+<p>IMPORTANT: specify a filename if you want to process the triples later,
+since seq2seq isn’t integrated.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>query</strong> (<em>string</em>) – argument to which we want the counter argument</li>
+<li><strong>stance</strong> (<em>string</em>) – stance of the argument</li>
+<li><strong>filename</strong> (<em>string</em>) – to saved results on hd, provide a path here, defaults to None</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">best counter triples (max 10)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">list(tuple(string))</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>TypeError</strong> – query or stance are no strings</li>
+<li><strong>AttributeError</strong> – corpus and/or graph not loaded</li>
+<li><strong>ValueError</strong> – no triples extracted from query (might be too short)</li>
+<li><strong>OSError</strong> – only if filepath is specified</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="akglib.AKG.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>data_proc=False</em>, <em>graph=False</em><span class="sig-paren">)</span><a class="headerlink" href="#akglib.AKG.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load processed data and/or the processed graph, using the location
+provided from corpus_path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_proc</strong> (<em>boolean</em>) – should processed data be loaded, defaults to False</li>
+<li><strong>graph</strong> (<em>boolean</em>) – should the graph be loaded, defaults to False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>OSError</strong> – if files not found / unable to open them</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="akglib.AKG.load_corpus">
+<code class="descname">load_corpus</code><span class="sig-paren">(</span><em>corpus_path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#akglib.AKG.load_corpus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the (args.me-)corpus, provided in .json format.
+Uses the path given from class initialization, alternativly provide one
+here.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>corpus_path</strong> (<em>string</em>) – Path to the corpus (or sample), defaults to None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>TypeError</strong> – invalid corpus_path format</li>
+<li><strong>OSError</strong> – filesystem errors</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="akglib.AKG.my_plot">
+<code class="descname">my_plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#akglib.AKG.my_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the graph with predifined configuration, might take a while for
+big graphes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="akglib.AKG.process_arguments">
+<code class="descname">process_arguments</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#akglib.AKG.process_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main routine for processing the corpus.</p>
+<p>Iterates over each argument and executes neuralCoref and supervised-OpenIE.
+Sentences with triple indicator marks are saved for later, when a
+Language model which transforms triples into sentences will be trained (other module).
+Every 1000 arguments, the processed data will be saved, using the location
+provided from corpus_path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><strong>AttributeError</strong> – corpus not loaded previously</li>
+<li><strong>TypeError</strong> – args-me structure not detected</li>
+<li><strong>KeyError</strong> – args-me arguments key not found</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="akglib.AKG.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>data_proc=False</em>, <em>graph=False</em><span class="sig-paren">)</span><a class="headerlink" href="#akglib.AKG.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save processed data and/or the processed graph, using the location
+provided from corpus_path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_proc</strong> (<em>boolean</em>) – should processed data be saved, defaults to False</li>
+<li><strong>graph</strong> (<em>boolean</em>) – should the graph be saved, defaults to False</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>OSError</strong> – if not able to write</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="akglib.AKG.write_seq2seq_train">
+<code class="descname">write_seq2seq_train</code><span class="sig-paren">(</span><em>marked=True</em><span class="sig-paren">)</span><a class="headerlink" href="#akglib.AKG.write_seq2seq_train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes the training data for the seq2seq model, optionally with markers
+for the argument positions. Uses corpus_path for the save path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>marked</strong> (<em>boolean</em>) – if the positions of the arguments should be marked, defaults to True</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>OSError</strong> – No access to writefile, or self.data_proc not provided / corrupt</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="akgcreate.html" class="btn btn-neutral float-right" title="akgcreate module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="interface.html" class="btn btn-neutral float-left" title="interface module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Julius Unverfehrt, Jan Stanicki, Oliver Zobel, Michael Zadikowitsch
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

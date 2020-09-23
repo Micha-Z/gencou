@@ -1,0 +1,41 @@
+Seq2Seq Model
+=============
+
+Outline
+-------
+
+**Task:**
+
+The goal of the Seq2Seq Model is to learn how to recreate the argument sentences from the triples and to fill in the missing sentence parts.
+
+**Input:**
+
+The Seq2Seq Neural Network Model is trained with the graph triples extracted from the AKG and  the corresponding argument as gold label.
+
+**Output:**
+
+Sentences generated from the Seq2Seq Model.
+
+**Our Model:**
+
+- The test corpus had around 1.5 million triple/argument pairs
+- The hidden size of the NN was 300
+- The learning rate was 0.01
+- 20000 iterations over the data
+
+The code for the Seq2Seq model was used from the PyThorch Tutorials Web-page and was adapted and extended for our task [1]_
+
+Usage
+-----
+
+The :mod:`seqtoseq_train_model` module loads the corpus from the data folder and starts training the Neural Network. After the training is finished the module saves the model in *data/seqtoseq/*.  There are two different models for the Encoder NN and the Decoder NN.
+
+
+The :mod:`seqtoseq_load_model:mod:` module loads the pretrained models for the Encoder and the Decoder from the seqtoseq folder and generates sentences from the triples who were saved in *data/triples/*.
+
+Results:
+--------
+
+Even with a much bigger corpus and a lot more computing power the results were frustratingly bad. The reason behind it is most likely the big difference in word length between the triples and the arguments.
+
+.. [1] https://pytorch.org/tutorials/intermediate/seq2seq_translation_tutorial.html#training-the-model

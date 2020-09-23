@@ -1,0 +1,7 @@
+frame\_split\_corpus module
+===========================
+
+.. automodule:: frame_split_corpus
+    :members:
+    :undoc-members:
+    :show-inheritance:

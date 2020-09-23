@@ -1,0 +1,13 @@
+Overall design
+==============
+
+The project is separated in four tasks.
+
+The first task is to create the :doc:`design_akg`, necessary preprocessing included. Several measures are applied to the graph data to weight the nodes importance, respective to a query. We use the args.me corpus (see :doc:`data`).
+
+The next task is a frame classifier (see :doc:`design_frame`). This is a BERT model for sequence classification applied to frame classification. It is trained on a separate corpus with annotated frames. The main function is the application and prediction of a passed argument to find better and more fitting arguments.
+
+The :doc:`design_seqtoseq` trains on the whole graph and generates natural language from the passed triples.
+
+For the :doc:`evaluation` a survey needs to be created with different aspects to focus on. It includes looking at one argument to rate, ranking different counter arguments and comparing different possible counter arguments.
+Since our natural language output doesn't feel very natural, (see :doc:`results`) we couldn't evaluate the final counter arguments.

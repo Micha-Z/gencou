@@ -1,0 +1,7 @@
+akglib module
+=============
+
+.. automodule:: akglib
+    :members:
+    :undoc-members:
+    :show-inheritance:

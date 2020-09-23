@@ -1,0 +1,61 @@
+.. gencou documentation master file, created by
+   sphinx-quickstart on Wed Nov  6 12:11:44 2019.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to gencou's documentation!
+==================================
+
+The gencou project revolves around generating counter arguments.
+Given an argument, locate relevant data in a preconstructed
+argument knowledge graph and generate the
+"best" counterargument using a Seq2Seq model to transform the
+vertices and edges into natural language.
+
+The project was created for the course 'Softwareprojekt' during our bachelor in the Institute of Computational Linguistics Heidelberg and was supervised by Prof. Dr. Annette Frank. The course spanned from October 22nd 2019 to February 29th 2020.
+
+The task is linked here. [1]_
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Overview
+
+   include/getting_started
+   include/results
+   include/evaluation
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Design
+
+   include/design
+   include/data
+   include/design_akg
+   include/design_frame
+   include/design_seqtoseq
+
+
+.. toctree::
+   :maxdepth: 4
+   :caption: Modules
+
+   source/interface
+   source/akglib
+   source/akgcreate
+   source/frame_bert_interface
+   source/frame_bert_prepare_data
+   source/frame_change_csv
+   source/frame_split_corpus
+   source/seqtoseq_train_model
+   source/seqtoseq_load_model
+
+
+
+Appendix
+--------
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
+.. [1] https://www.cl.uni-heidelberg.de/courses/ws19/softwareprojekt/material/projects_frank.pdf>

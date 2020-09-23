@@ -1,0 +1,262 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Seq2Seq Model &mdash; gencou  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="interface module" href="../source/interface.html" />
+    <link rel="prev" title="FrameBert" href="design_frame.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> gencou
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">Exemplary results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="design.html">Overall design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_akg.html">Argument Knowledge Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_frame.html">FrameBert</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Seq2Seq Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#outline">Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#results">Results:</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../source/interface.html">interface module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/akglib.html">akglib module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/akgcreate.html">akgcreate module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_bert_interface.html">frame_bert_interface module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_bert_prepare_data.html">frame_bert_prepare_data module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_change_csv.html">frame_change_csv module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_split_corpus.html">frame_split_corpus module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/seqtoseq_train_model.html">seqtoseq_train_model module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/seqtoseq_load_model.html">seqtoseq_load_model module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">gencou</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Seq2Seq Model</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/include/design_seqtoseq.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="seq2seq-model">
+<h1>Seq2Seq Model<a class="headerlink" href="#seq2seq-model" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="outline">
+<h2>Outline<a class="headerlink" href="#outline" title="Permalink to this headline">¶</a></h2>
+<p><strong>Task:</strong></p>
+<p>The goal of the Seq2Seq Model is to learn how to recreate the argument sentences from the triples and to fill in the missing sentence parts.</p>
+<p><strong>Input:</strong></p>
+<p>The Seq2Seq Neural Network Model is trained with the graph triples extracted from the AKG and  the corresponding argument as gold label.</p>
+<p><strong>Output:</strong></p>
+<p>Sentences generated from the Seq2Seq Model.</p>
+<p><strong>Our Model:</strong></p>
+<ul class="simple">
+<li>The test corpus had around 1.5 million triple/argument pairs</li>
+<li>The hidden size of the NN was 300</li>
+<li>The learning rate was 0.01</li>
+<li>20000 iterations over the data</li>
+</ul>
+<p>The code for the Seq2Seq model was used from the PyThorch Tutorials Web-page and was adapted and extended for our task <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="../source/seqtoseq_train_model.html#module-seqtoseq_train_model" title="seqtoseq_train_model"><code class="xref py py-mod docutils literal notranslate"><span class="pre">seqtoseq_train_model</span></code></a> module loads the corpus from the data folder and starts training the Neural Network. After the training is finished the module saves the model in <em>data/seqtoseq/</em>.  There are two different models for the Encoder NN and the Decoder NN.</p>
+<p>The <code class="xref py py-mod docutils literal notranslate"><span class="pre">seqtoseq_load_model:mod:</span></code> module loads the pretrained models for the Encoder and the Decoder from the seqtoseq folder and generates sentences from the triples who were saved in <em>data/triples/</em>.</p>
+</div>
+<div class="section" id="results">
+<h2>Results:<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
+<p>Even with a much bigger corpus and a lot more computing power the results were frustratingly bad. The reason behind it is most likely the big difference in word length between the triples and the arguments.</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://pytorch.org/tutorials/intermediate/seq2seq_translation_tutorial.html#training-the-model">https://pytorch.org/tutorials/intermediate/seq2seq_translation_tutorial.html#training-the-model</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../source/interface.html" class="btn btn-neutral float-right" title="interface module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="design_frame.html" class="btn btn-neutral float-left" title="FrameBert" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Julius Unverfehrt, Jan Stanicki, Oliver Zobel, Michael Zadikowitsch
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

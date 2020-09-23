@@ -1,0 +1,60 @@
+Data
+====
+
+:Assignee: Jan Stanicki
+
+For the creation of the argument knowledge graph, we use the Args.me Corpus [1]_
+
+Overview
+--------
+
+The args.me corpus is a project by Yamen Ajjour, Henning Wachsmuth, Johannes Kiesel, Martin Potthast, Matthias Hagen and Benno Stein.
+It comprises 387 606 arguments crawled from four debate portals in the middle of 2019. The debate portals are Debatewise, IDebate.org, Debatepedia, and Debate.org. The arguments are extracted using heuristics that are designed for each debate portal. The corpus consists of one JSON-file.
+The average count of arguments per debate in our datasetamounts to 6.5. Most debates include 6 to 10 arguments. Only a few debates reach more than 20 arguments.
+
+Statistics
+----------
+
+- 387606 arguments from 59637 debates
+- count of arguments total: 387606
+- count of pro stance: 200099
+- count of con stance: 187507
+- count of debates: 59637
+
+Structure
+---------
+
+Each argument in the corpus contains the following information:
+
+- premises
+
+  - text: number of sentences
+  - stance: "PRO" / "CON"
+
+- context
+
+  - sourceId: e.g. "c67482ba-2019-04-18T13:32:05Z"
+  - previousArgumentInSourceId: same as sourceId
+  - acquisitionTime: "2019-04-18T13:32:05Z" year-month-dayThours:minutes:secondsLetter
+  - discussionTitle: string of topic, long
+  - sourceTitle: Type of Debate | discussionTitle | url of source page
+  - sourceUrl: concrete url to argument
+  - nextArgumentInSourceId: sourceId of next argument
+  - id: e.g. "c67482ba-2019-04-18T13:32:05Z-00000-000"
+
+- conclusion: "string", short sentence or topic
+
+Example
+-------
+
+::
+
+  {"premises": [{"text": "My opponent forfeited every round. None of my arguments were answered. I don\u2019t like the idea of winning by default, but here we are.Tule: it\u2019s good for students to get involved and address big issues like teen pregnancy. You need to be able to answer arguments like mine and not simply prepare for an abstinence-only type of response. You should also be aware that, in the U.S., condoms may be sold to minors in ANY state. A retailer who says it is illegal to sell you them is, frankly, wrong.",
+
+  "stance": "CON"}],
+
+  "context": {"sourceId": "c67482ba-2019-04-18T13:32:05Z", "previousArgumentInSourceId": "", "acquisitionTime": "2019-04-18T13:32:05Z", "discussionTitle": "Contraceptive Forms for High School Students", "sourceTitle": "Debate Argument: Contraceptive Forms for High School Students | Debate.org", "sourceUrl": "https://www.debate.org/debates/Contraceptive-Forms-for-High-School-Students/1/", "nextArgumentInSourceId": "c67482ba-2019-04-18T13:32:05Z-00001-000"}, "id": "c67482ba-2019-04-18T13:32:05Z-00000-000",
+
+  "conclusion": "Contraceptive Forms for High School Students"},
+
+.. [1] Ajjour, Y., Wachsmuth, H., Kiesel, J., Potthast, M., Hagen, M., and Stein, B. (2019b).  Data Acquisition for Argument Search: The args.me corpus.  In KI 2019. Springer.

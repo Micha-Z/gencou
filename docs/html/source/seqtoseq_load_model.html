@@ -1,0 +1,368 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>seqtoseq_load_model module &mdash; gencou  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="seqtoseq_train_model module" href="seqtoseq_train_model.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> gencou
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../include/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../include/results.html">Exemplary results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../include/evaluation.html">Evaluation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../include/design.html">Overall design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../include/data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../include/design_akg.html">Argument Knowledge Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../include/design_frame.html">FrameBert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../include/design_seqtoseq.html">Seq2Seq Model</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="interface.html">interface module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="akglib.html">akglib module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="akgcreate.html">akgcreate module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame_bert_interface.html">frame_bert_interface module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame_bert_prepare_data.html">frame_bert_prepare_data module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame_change_csv.html">frame_change_csv module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="frame_split_corpus.html">frame_split_corpus module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seqtoseq_train_model.html">seqtoseq_train_model module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">seqtoseq_load_model module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">gencou</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>seqtoseq_load_model module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/source/seqtoseq_load_model.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-seqtoseq_load_model">
+<span id="seqtoseq-load-model-module"></span><h1>seqtoseq_load_model module<a class="headerlink" href="#module-seqtoseq_load_model" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="seqtoseq_load_model.AttnDecoderRNN">
+<em class="property">class </em><code class="descclassname">seqtoseq_load_model.</code><code class="descname">AttnDecoderRNN</code><span class="sig-paren">(</span><em>hidden_size</em>, <em>output_size</em>, <em>dropout_p=0.1</em>, <em>max_length=100</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.AttnDecoderRNN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="method">
+<dt id="seqtoseq_load_model.AttnDecoderRNN.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input</em>, <em>hidden</em>, <em>encoder_outputs</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.AttnDecoderRNN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="seqtoseq_load_model.AttnDecoderRNN.initHidden">
+<code class="descname">initHidden</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.AttnDecoderRNN.initHidden" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="seqtoseq_load_model.DecoderRNN">
+<em class="property">class </em><code class="descclassname">seqtoseq_load_model.</code><code class="descname">DecoderRNN</code><span class="sig-paren">(</span><em>hidden_size</em>, <em>output_size</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.DecoderRNN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="method">
+<dt id="seqtoseq_load_model.DecoderRNN.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input</em>, <em>hidden</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.DecoderRNN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="seqtoseq_load_model.DecoderRNN.initHidden">
+<code class="descname">initHidden</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.DecoderRNN.initHidden" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="seqtoseq_load_model.EncoderRNN">
+<em class="property">class </em><code class="descclassname">seqtoseq_load_model.</code><code class="descname">EncoderRNN</code><span class="sig-paren">(</span><em>input_size</em>, <em>hidden_size</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.EncoderRNN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="method">
+<dt id="seqtoseq_load_model.EncoderRNN.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input</em>, <em>hidden</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.EncoderRNN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="seqtoseq_load_model.EncoderRNN.initHidden">
+<code class="descname">initHidden</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.EncoderRNN.initHidden" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="seqtoseq_load_model.Lang">
+<em class="property">class </em><code class="descclassname">seqtoseq_load_model.</code><code class="descname">Lang</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.Lang" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="seqtoseq_load_model.Lang.addSentence">
+<code class="descname">addSentence</code><span class="sig-paren">(</span><em>sentence</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.Lang.addSentence" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="seqtoseq_load_model.Lang.addWord">
+<code class="descname">addWord</code><span class="sig-paren">(</span><em>word</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.Lang.addWord" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="seqtoseq_load_model.evaluate">
+<code class="descclassname">seqtoseq_load_model.</code><code class="descname">evaluate</code><span class="sig-paren">(</span><em>encoder</em>, <em>decoder</em>, <em>sentence</em>, <em>max_length=100</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="seqtoseq_load_model.evaluateRandomly">
+<code class="descclassname">seqtoseq_load_model.</code><code class="descname">evaluateRandomly</code><span class="sig-paren">(</span><em>encoder</em>, <em>decoder</em>, <em>n=5</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.evaluateRandomly" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="seqtoseq_load_model.gen_sentence">
+<code class="descclassname">seqtoseq_load_model.</code><code class="descname">gen_sentence</code><span class="sig-paren">(</span><em>triple</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.gen_sentence" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="seqtoseq_load_model.indexesFromSentence">
+<code class="descclassname">seqtoseq_load_model.</code><code class="descname">indexesFromSentence</code><span class="sig-paren">(</span><em>lang</em>, <em>sentence</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.indexesFromSentence" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="seqtoseq_load_model.normalizeString">
+<code class="descclassname">seqtoseq_load_model.</code><code class="descname">normalizeString</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.normalizeString" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="seqtoseq_load_model.open_graphtriples">
+<code class="descclassname">seqtoseq_load_model.</code><code class="descname">open_graphtriples</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.open_graphtriples" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="seqtoseq_load_model.prepareData">
+<code class="descclassname">seqtoseq_load_model.</code><code class="descname">prepareData</code><span class="sig-paren">(</span><em>lang1</em>, <em>lang2</em>, <em>reverse=False</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.prepareData" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="seqtoseq_load_model.readLangs">
+<code class="descclassname">seqtoseq_load_model.</code><code class="descname">readLangs</code><span class="sig-paren">(</span><em>lang1</em>, <em>lang2</em>, <em>reverse=False</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.readLangs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="seqtoseq_load_model.tensorFromSentence">
+<code class="descclassname">seqtoseq_load_model.</code><code class="descname">tensorFromSentence</code><span class="sig-paren">(</span><em>lang</em>, <em>sentence</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.tensorFromSentence" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="seqtoseq_load_model.tensorsFromPair">
+<code class="descclassname">seqtoseq_load_model.</code><code class="descname">tensorsFromPair</code><span class="sig-paren">(</span><em>pair</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.tensorsFromPair" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="seqtoseq_load_model.unicodeToAscii">
+<code class="descclassname">seqtoseq_load_model.</code><code class="descname">unicodeToAscii</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#seqtoseq_load_model.unicodeToAscii" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="seqtoseq_train_model.html" class="btn btn-neutral float-left" title="seqtoseq_train_model module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Julius Unverfehrt, Jan Stanicki, Oliver Zobel, Michael Zadikowitsch
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

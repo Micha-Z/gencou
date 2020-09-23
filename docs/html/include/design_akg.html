@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Argument Knowledge Graph &mdash; gencou  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FrameBert" href="design_frame.html" />
+    <link rel="prev" title="Data" href="data.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> gencou
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">Exemplary results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="design.html">Overall design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Argument Knowledge Graph</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#outline">Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#neuralcoref">Neuralcoref</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supervised-openie">Supervised-openIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#construction">Construction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#query">Query</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="design_frame.html">FrameBert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_seqtoseq.html">Seq2Seq Model</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../source/interface.html">interface module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/akglib.html">akglib module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/akgcreate.html">akgcreate module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_bert_interface.html">frame_bert_interface module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_bert_prepare_data.html">frame_bert_prepare_data module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_change_csv.html">frame_change_csv module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_split_corpus.html">frame_split_corpus module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/seqtoseq_train_model.html">seqtoseq_train_model module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/seqtoseq_load_model.html">seqtoseq_load_model module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">gencou</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Argument Knowledge Graph</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/include/design_akg.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="argument-knowledge-graph">
+<h1>Argument Knowledge Graph<a class="headerlink" href="#argument-knowledge-graph" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Assignee:</th><td class="field-body">Julius Unverfehrt</td>
+</tr>
+</tbody>
+</table>
+<p>For the actual module documentation, see <a class="reference internal" href="../source/akglib.html"><span class="doc">akglib module</span></a></p>
+<div class="section" id="outline">
+<h2>Outline<a class="headerlink" href="#outline" title="Permalink to this headline">¶</a></h2>
+<p><strong>Input</strong>:</p>
+<p>The graph is created from args.me arguments which consist of texts of variable length,
+which are annoted with additional information, see <a class="reference internal" href="data.html"><span class="doc">Data</span></a>.</p>
+<p><strong>Tasks:</strong></p>
+<ul class="simple">
+<li>Reduce input to (several) triples (SUBJ:PRED:OBJ)<ol class="arabic">
+<li>Resolve co-references, see <a class="reference internal" href="#coref"><span class="std std-ref">Neuralcoref</span></a></li>
+<li>Drop sequences without punctuation or verb, since supervised-openIE needs those</li>
+<li>Extract triples, see <a class="reference internal" href="#soie"><span class="std std-ref">Supervised-openIE</span></a></li>
+</ol>
+</li>
+<li>Add triples to the graph with SUBJ, OBJ as vertices and PRED as edge, see <a class="reference internal" href="#constr"><span class="std std-ref">Construction</span></a></li>
+<li>Merge similar vertices to reduce complexity and increase graph density</li>
+<li>Annotate additional information (conclusion, stance, argument membership)</li>
+</ul>
+<p><strong>Output</strong>:</p>
+<p>The best matching triples that counter a queried argument, see <a class="reference internal" href="#query"><span class="std std-ref">Query</span></a>.</p>
+<p><strong>Tasks:</strong></p>
+<ul class="simple">
+<li>Identify relevant graph sections</li>
+<li>Rank fitting triples using page rank, similarity measures and frames</li>
+</ul>
+</div>
+<div class="section" id="neuralcoref">
+<span id="coref"></span><h2>Neuralcoref<a class="headerlink" href="#neuralcoref" title="Permalink to this headline">¶</a></h2>
+<p>To resolve co-references, we use the neuralcoref <a class="footnote-reference" href="#id6" id="id1">[1]</a> implementation from huggingface, which is fast and yields
+satisfying results. The greediness is kept at the 0.5 default value.
+Identified co-references are resolved, with the idea of making more node merges
+in the graph possible.</p>
+</div>
+<div class="section" id="supervised-openie">
+<span id="soie"></span><h2>Supervised-openIE<a class="headerlink" href="#supervised-openie" title="Permalink to this headline">¶</a></h2>
+<p>We use an implementation <a class="footnote-reference" href="#id7" id="id2">[2]</a> of openIE from Gabriel Stanovsky et al. <a class="footnote-reference" href="#id8" id="id3">[3]</a>, which splits sentences at all verb positions and creates triples with SUBJ:PRED:OBJ. For all possible solutions a confidence measure is computed. We take the most confident solution, which tends to be only a part of the whole sentence. The parse is very flat on the dependency level (SUBJ is ARG0, ARG1, etc., same for OBJ). Generally we found out while working on the project, that supervised-openIE might not have been the best parser. For further work we would recommend to try out deeper dependency parser.</p>
+</div>
+<div class="section" id="construction">
+<span id="constr"></span><h2>Construction<a class="headerlink" href="#construction" title="Permalink to this headline">¶</a></h2>
+<p>For adding the triples to the graph, following steps are made:</p>
+<ul class="simple">
+<li>Merge vertices if cosine TF-IDF similarity to an existing one is greater than 0.9</li>
+<li>Remember performed merges to improve run time</li>
+<li>Keep shorter vertex (debatable, information loss definitely happened)</li>
+<li>Allow only one merge per existing vertex to prevent further information loss</li>
+</ul>
+<p>The cosine check proved to be pretty slow after a certain node threshold was met,
+which is why we used Sequence matching in later approaches. In this version, the cosine similarity is still in place though.</p>
+</div>
+<div class="section" id="query">
+<span id="id4"></span><h2>Query<a class="headerlink" href="#query" title="Permalink to this headline">¶</a></h2>
+<p>A query to the graph consists of an argument with the respective stance. Following steps are taken:</p>
+<ul class="simple">
+<li>The argument is processed into triples, with the same method used to construct the graph.</li>
+<li>Relevant graph sections are identified via a simple sequence matcher (similarity ratio of around 0.9 proved to be best). This method proved to be way faster than cosine TF-IDF and yields comparable results.</li>
+<li>Collect all links in the proximity that oppose the query arguments’ stance</li>
+<li>Order by<ol class="arabic">
+<li>Similarity to the query, presuming that good counterarguments have a high similarity in the vocabulary <a class="footnote-reference" href="#id9" id="id5">[4]</a></li>
+<li>Same frame</li>
+<li>PageRank</li>
+<li>The values are normalized and weighted (refer to <a class="reference internal" href="../source/akglib.html#akglib.AKG.get_counter_triples" title="akglib.AKG.get_counter_triples"><code class="xref py py-meth docutils literal notranslate"><span class="pre">akglib.AKG.get_counter_triples()</span></code></a> for further details)</li>
+</ol>
+</li>
+<li>Return the (ten) best triples</li>
+</ul>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://github.com/huggingface/neuralcoref">https://github.com/huggingface/neuralcoref</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="https://github.com/gabrielStanovsky/supervised-oie">https://github.com/gabrielStanovsky/supervised-oie</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>Stanovsky, G., Michael, J., Zettlemoyer, L. &amp; Dagan, I. (2018). Supervised Open Information Extraction. In NAACL 2018.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[4]</a></td><td>Wachsmuth, H. [Henning], Syedand, S. &amp; Stein, B. (2018). Retrieval of the Best Counterargument without Prior Topic Knowledge. Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics 2018.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="design_frame.html" class="btn btn-neutral float-right" title="FrameBert" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="data.html" class="btn btn-neutral float-left" title="Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Julius Unverfehrt, Jan Stanicki, Oliver Zobel, Michael Zadikowitsch
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

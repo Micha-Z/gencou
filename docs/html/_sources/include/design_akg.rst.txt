@@ -1,0 +1,91 @@
+Argument Knowledge Graph
+========================
+
+:Assignee: Julius Unverfehrt
+
+For the actual module documentation, see :doc:`../source/akglib`
+
+Outline
+-------
+
+**Input**:
+
+The graph is created from args.me arguments which consist of texts of variable length,
+which are annoted with additional information, see :doc:`../include/data`.
+
+**Tasks:**
+
+* Reduce input to (several) triples (SUBJ\:PRED\:OBJ)
+
+  1. Resolve co-references, see :ref:`coref`
+  2. Drop sequences without punctuation or verb, since supervised-openIE needs those
+  3. Extract triples, see :ref:`soIE`
+* Add triples to the graph with SUBJ, OBJ as vertices and PRED as edge, see :ref:`constr`
+* Merge similar vertices to reduce complexity and increase graph density
+* Annotate additional information (conclusion, stance, argument membership)
+
+**Output**:
+
+The best matching triples that counter a queried argument, see :ref:`query`.
+
+**Tasks:**
+
+* Identify relevant graph sections
+* Rank fitting triples using page rank, similarity measures and frames
+
+.. _coref:
+
+Neuralcoref
+-----------
+To resolve co-references, we use the neuralcoref [1]_ implementation from huggingface, which is fast and yields
+satisfying results. The greediness is kept at the 0.5 default value.
+Identified co-references are resolved, with the idea of making more node merges
+in the graph possible.
+
+.. _soIE:
+
+Supervised-openIE
+-----------------
+We use an implementation [2]_ of openIE from Gabriel Stanovsky et al. [3]_, which splits sentences at all verb positions and creates triples with SUBJ\:PRED\:OBJ. For all possible solutions a confidence measure is computed. We take the most confident solution, which tends to be only a part of the whole sentence. The parse is very flat on the dependency level (SUBJ is ARG0, ARG1, etc., same for OBJ). Generally we found out while working on the project, that supervised-openIE might not have been the best parser. For further work we would recommend to try out deeper dependency parser.
+
+.. _constr:
+
+Construction
+------------
+
+For adding the triples to the graph, following steps are made:
+
+- Merge vertices if cosine TF-IDF similarity to an existing one is greater than 0.9
+- Remember performed merges to improve run time
+- Keep shorter vertex (debatable, information loss definitely happened)
+- Allow only one merge per existing vertex to prevent further information loss
+
+The cosine check proved to be pretty slow after a certain node threshold was met,
+which is why we used Sequence matching in later approaches. In this version, the cosine similarity is still in place though.
+
+.. _query:
+
+Query
+-----
+
+A query to the graph consists of an argument with the respective stance. Following steps are taken:
+
+- The argument is processed into triples, with the same method used to construct the graph.
+
+- Relevant graph sections are identified via a simple sequence matcher (similarity ratio of around 0.9 proved to be best). This method proved to be way faster than cosine TF-IDF and yields comparable results.
+
+- Collect all links in the proximity that oppose the query arguments' stance
+
+- Order by
+
+  1. Similarity to the query, presuming that good counterarguments have a high similarity in the vocabulary [4]_
+  2. Same frame
+  3. PageRank
+  4. The values are normalized and weighted (refer to :meth:`akglib.AKG.get_counter_triples` for further details)
+
+- Return the (ten) best triples
+
+.. [1] https://github.com/huggingface/neuralcoref
+.. [2] https://github.com/gabrielStanovsky/supervised-oie
+.. [3] Stanovsky, G., Michael, J., Zettlemoyer, L. & Dagan, I. (2018). Supervised Open Information Extraction. In NAACL 2018.
+.. [4] Wachsmuth, H. [Henning], Syedand, S. & Stein, B. (2018). Retrieval of the Best Counterargument without Prior Topic Knowledge. Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics 2018.

@@ -1,0 +1,358 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Getting Started &mdash; gencou  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exemplary results" href="results.html" />
+    <link rel="prev" title="Welcome to gencou’s documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> gencou
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Overview</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage-of-our-pretrained-model">Usage of our pretrained model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#train-yourself">Train yourself</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-the-argument-knowledge-graph">Create the Argument Knowledge Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#train-framebert-model">Train FrameBert model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">Exemplary results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Overall design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_akg.html">Argument Knowledge Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_frame.html">FrameBert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_seqtoseq.html">Seq2Seq Model</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../source/interface.html">interface module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/akglib.html">akglib module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/akgcreate.html">akgcreate module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_bert_interface.html">frame_bert_interface module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_bert_prepare_data.html">frame_bert_prepare_data module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_change_csv.html">frame_change_csv module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/frame_split_corpus.html">frame_split_corpus module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/seqtoseq_train_model.html">seqtoseq_train_model module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/seqtoseq_load_model.html">seqtoseq_load_model module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">gencou</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Getting Started</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/include/getting_started.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>At least Python version 3.6.x is needed to run our system. Further, the following packages need to be existent:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">python-igraph:</th><td class="field-body">provides the graph structure</td>
+</tr>
+<tr class="field-even field"><th class="field-name">neuralcoref:</th><td class="field-body">provides the co-references-resolving</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">allennlp:</th><td class="field-body">provides a supervised-openIE implementation, used for the information extraction from text</td>
+</tr>
+<tr class="field-even field"><th class="field-name">spacy:</th><td class="field-body">Version 2.1.0, needed by supervised-openIE</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">pytorch_pretrained_bert:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">contains a pytorch re-implementation of Google’s TensorFlow repository for the BERT model</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>sklearn</li>
+<li>progressbar2</li>
+<li>torch</li>
+<li>matplotlib</li>
+<li>numpy</li>
+<li>tools</li>
+<li>tqdm</li>
+<li>pandas</li>
+<li>nltk.corpus</li>
+</ul>
+<p>To install the required packages, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install -r requirements.txt
+</pre></div>
+</div>
+<p>Make sure to have nltk.stopwords installed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3
+&gt;&gt;&gt; import nltk
+&gt;&gt;&gt; nltk.download(&quot;stopwords&quot;)
+</pre></div>
+</div>
+<p>Additionally make sure that the english language model from spacy is installed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m spacy download en
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage-of-our-pretrained-model">
+<h2>Usage of our pretrained model<a class="headerlink" href="#usage-of-our-pretrained-model" title="Permalink to this headline">¶</a></h2>
+<p>For using our system, start by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 interface.py
+</pre></div>
+</div>
+<p>This module includes both the graph and the frame classification.</p>
+<p>If <em>[1] batch</em> is chosen, the file <em>../data/arguments.txt</em> is loaded, which contains example arguments with their respective stance. Feel free to add or change arguments, but make sure that you keep the correct syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">argument</span> <span class="p">(</span><span class="nb">all</span> <span class="n">sentences</span> <span class="ow">in</span> <span class="n">one</span> <span class="n">line</span><span class="p">)</span>
+<span class="n">stance</span>
+<span class="n">argument</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>To generate natural language from the found triples, execute <code class="xref py py-mod docutils literal notranslate"><span class="pre">source/seqtoseq_load_model</span></code>,
+which prints the sentences to your terminal.
+Bring a few minutes at the start, the seq2seq model takes a while to initialize.</p>
+<p>This demo is trained with 15000 arguments from the args.me corpus.
+The system is meant to contain the whole corpus, but due to timing issues
+(creating only the graph on a cluster took over a week already) we weren’t
+able to implement that yet. We hope that this sample suffices as proof of concept.</p>
+</div>
+<div class="section" id="train-yourself">
+<h2>Train yourself<a class="headerlink" href="#train-yourself" title="Permalink to this headline">¶</a></h2>
+<p>Since our project is scattered in several parts by nature, we haven’t yet found a convenient way to integrate an “all-in-one”
+training processing script. We try our best though to outline here the necessary steps to train our model.</p>
+<ol class="arabic simple">
+<li><a class="reference internal" href="#akg"><span class="std std-ref">Create the Argument Knowledge Graph</span></a></li>
+<li><a class="reference internal" href="#fra"><span class="std std-ref">Train FrameBert model</span></a></li>
+<li>Train the seq2seq model (with data provided by the graph)</li>
+</ol>
+</div>
+<div class="section" id="create-the-argument-knowledge-graph">
+<span id="akg"></span><h2>Create the Argument Knowledge Graph<a class="headerlink" href="#create-the-argument-knowledge-graph" title="Permalink to this headline">¶</a></h2>
+<p>We recommend adjusting the <a class="reference internal" href="../source/akgcreate.html"><span class="doc">akgcreate module</span></a> script, which is commented and calls all necessary methods needed to create an
+argument knowledge graph. For further information on the AKG class, see <a class="reference internal" href="../source/akglib.html"><span class="doc">akglib module</span></a></p>
+<p>Make sure to get your copy of the args.me corpus <a class="footnote-reference" href="#id2" id="id1">[1]</a> (894.9 MB in JSON format). Put it in the folder <em>data/akg/</em></p>
+<p>If using only the class, make sure to keep the following work order:</p>
+<ol class="arabic simple">
+<li>Create the class (specify the path to your args.me corpus as parameter, if not <em>default</em>)</li>
+<li>Load the corpus <a class="reference internal" href="../source/akglib.html#akglib.AKG.load_corpus" title="akglib.AKG.load_corpus"><code class="xref py py-meth docutils literal notranslate"><span class="pre">akglib.AKG.load_corpus()</span></code></a></li>
+<li>Process the corpus <a class="reference internal" href="../source/akglib.html#akglib.AKG.process_arguments" title="akglib.AKG.process_arguments"><code class="xref py py-meth docutils literal notranslate"><span class="pre">akglib.AKG.process_arguments()</span></code></a></li>
+<li>Construct the graph <a class="reference internal" href="../source/akglib.html#akglib.AKG.construct_graph" title="akglib.AKG.construct_graph"><code class="xref py py-meth docutils literal notranslate"><span class="pre">akglib.AKG.construct_graph()</span></code></a></li>
+<li><em>optional</em> write the training data for the seq2seq model <a class="reference internal" href="../source/akglib.html#akglib.AKG.write_seq2seq_train" title="akglib.AKG.write_seq2seq_train"><code class="xref py py-meth docutils literal notranslate"><span class="pre">akglib.AKG.write_seq2seq_train()</span></code></a></li>
+</ol>
+<p>At any point, save your data with the <a class="reference internal" href="../source/akglib.html#akglib.AKG.save" title="akglib.AKG.save"><code class="xref py py-meth docutils literal notranslate"><span class="pre">akglib.AKG.save()</span></code></a> method.</p>
+</div>
+<div class="section" id="train-framebert-model">
+<span id="fra"></span><h2>Train FrameBert model<a class="headerlink" href="#train-framebert-model" title="Permalink to this headline">¶</a></h2>
+<p>First, <a class="reference internal" href="../source/frame_cluster_frames.html#module-frame_cluster_frames" title="frame_cluster_frames"><code class="xref py py-mod docutils literal notranslate"><span class="pre">frame_cluster_frames</span></code></a> needs to be executed. Navigate to the directory and use the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">frame_cluster_frames</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Use this pattern for every mentioned file.
+This classifies the frames into 10 clusters.
+These classifications need to be updated in the training corpus with <a class="reference internal" href="../source/frame_change_csv.html#module-frame_change_csv" title="frame_change_csv"><code class="xref py py-mod docutils literal notranslate"><span class="pre">frame_change_csv</span></code></a>.
+To split the corpus in a train and a test file, execute: <a class="reference internal" href="../source/frame_split_corpus.html#module-frame_split_corpus" title="frame_split_corpus"><code class="xref py py-mod docutils literal notranslate"><span class="pre">frame_split_corpus</span></code></a>.</p>
+<p>To further preprocess our data and generate tsv-files from the csv-files use <a class="reference internal" href="../source/frame_bert_prepare_data.html#module-frame_bert_prepare_data" title="frame_bert_prepare_data"><code class="xref py py-mod docutils literal notranslate"><span class="pre">frame_bert_prepare_data</span></code></a>.
+It also contains the function to convert the argument texts into feature vectors.</p>
+<p>To start the training of our BERT fine-tuning model, execute <code class="xref py py-mod docutils literal notranslate"><span class="pre">frame_bert_train</span></code>.
+By executing the file, the pretrained model (bert-base-cased) gets downloaded which is about 400mb.
+When the model is trained the files created are in <em>../data/frames/outputs/frames40ep/</em> .
+We have to zip the model with the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/</span><span class="n">data</span><span class="o">/</span><span class="n">frames</span><span class="o">/</span><span class="n">outputs</span><span class="o">/</span><span class="n">frames40ep</span><span class="o">/</span> <span class="n">tar</span> <span class="n">cfvz</span> <span class="n">frames40ep</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="n">config</span><span class="o">.</span><span class="n">json</span> <span class="n">pytorch_model</span><span class="o">.</span><span class="n">bin</span>
+</pre></div>
+</div>
+<p>The zipped package needs to be moved to the directory <em>cache/</em>. Do that by executing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">data</span><span class="o">/</span><span class="n">frames</span><span class="o">/</span><span class="n">outputs</span><span class="o">/</span><span class="n">frames40ep</span><span class="o">/</span><span class="n">frames40ep</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="n">data</span><span class="o">/</span><span class="n">frames</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>For evaluating on the test set, use <code class="xref py py-mod docutils literal notranslate"><span class="pre">frame_bert_eval</span></code>.</p>
+<p>The file <a class="reference internal" href="../source/frame_bert_interface.html#module-frame_bert_interface" title="frame_bert_interface"><code class="xref py py-mod docutils literal notranslate"><span class="pre">frame_bert_interface</span></code></a> contains the function to predict the frame of a single argument,
+which is used by the argument knowledge graph.</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://webis.de/data/args-me.html">https://webis.de/data/args-me.html</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="results.html" class="btn btn-neutral float-right" title="Exemplary results" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to gencou’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Julius Unverfehrt, Jan Stanicki, Oliver Zobel, Michael Zadikowitsch
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

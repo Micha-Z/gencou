@@ -1,0 +1,7 @@
+seqtoseq\_train\_model module
+=============================
+
+.. automodule:: seqtoseq_train_model
+    :members:
+    :undoc-members:
+    :show-inheritance:

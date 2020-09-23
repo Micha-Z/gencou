@@ -1,0 +1,169 @@
+Exemplary results
+=================
+
+These are the results of the first arguments that you get with running :mod:`../source/interface` script in batch mode. Obviously not all found triples are really opposing the queryied argument and the seq2seq model is "on point".
+
+:Argument: Batman would beat Superman in a duel. He has more equipment at his disposal. He is also richer than Superman.
+:Stance: PRO
+
+*Triples*::
+
+  [('Batman', 'beat', 'Superman'),
+  ('It', "was n't", 'Batman'),
+  ('Batman',
+  'has been',
+  'able to defeat opponents physically more powerful than Batman'),
+  ('Batman', 'is', 'much bigger than Batman'),
+  ('Batman', 'to survive', 'much more than you or I'),
+  ('Batman', 'is', 'most popular than ever'),
+  ('Batman', 'is', 'best'),
+  ('Batman', 'would defeat', 'Iron Man'),
+  ('Batman', 'wants to punch', 'people at night'),
+  ('Batman', 'is', 'superior in raw intellect')]
+
+*seq2seq*::
+
+  the us that not . . . . . that . . . . . . . . . . . . . <EOS>
+  the us . . . . . . . . . . . . the . . . . . . . . . . . . the . . . <EOS>
+  the us that not the us . . . . the . . . . the . . <EOS>
+  the us that the the . the . . the . . . the . . . the . . . the . . <EOS>
+  a it not a . . . . . . . . . . . . . . <EOS>
+  the us that the by the . by . the . . . by . the . . . . . <EOS>
+  the the the the the . the . the . the . . the . . the . . . <EOS>
+  the us that the the of . the . of . . . the . . . <EOS>
+  the the that the the the . for the . the . . the . . the . . for the . . . <EOS>
+  the us that not the . us . . to . . . to . . . . to . . . . <EOS>
+
+:Argument: Immigrants are good for the economy. They do the jobs noone else wants to do.
+:Stance: PRO
+
+*Triples*::
+
+  [('migrants', 'came', 'in 2015'),
+  ('migrants', 'coming', 'to Europe'),
+  ('migrants', 'commit', 'a serious crime'),
+  ('migrants', 'came', 'to Europe in 2015'),
+  ('migrants', 'came', 'in to Germany'),
+  ('migrants', 'came', 'into all of Europe')]
+
+*seq2seq*::
+
+  in . . . . . . . . . . . . . . . . . . . . . . . . . . . . . <EOS>
+  . . . . . to . to . . . . to . . . . . to . . . . . . <EOS>
+  . . . . . . . . . . . . . . . . . . <EOS>
+  in . . . . . . . to . . to . . . . . . . . . . . <EOS>
+  in . . . . . . . to . . . . to . . . . . . . . . <EOS>
+  all of . . . . . . . . . . . . . . . . . <EOS>
+
+:Argument: Being an adult is worse than being a child. You have to work almost every day, adults don't have free time.
+:Stance: CON
+
+*Triples*::
+
+  [('adults', 'have become', 'hypocritical'),
+  ('adults', "do n't grow", 'new brain cells *'),
+  ('adults', 'have faced', 'this era in their lives'),
+  ('adults', "do n't understand", 'Women and the black body political system'),
+  ('You', '’re certified', 'adult'),
+  ('I', 'can trust', 'adults'),
+  ('adults', 'from harming', 'responsible adults'),
+  ('adults', 'are held', 'responsible for adults actions'),
+  ('adults', 'know', 'what The adults’re doing'),
+  ('adults', 'make', 'plans for adults future always')]
+
+*seq2seq*::
+
+  that are that . that . are . . . . that . <EOS>
+
+:Argument: The minimum wage should be raised. Everyone should be able to afford a good lifestyle and not worry about money all the time.
+:Stance: PRO
+
+*Triples*::
+
+  [('everyone', 'should be', 'able to'),
+  ('You', 'are not', 'everyone'),
+  ('everyone', 'to know', 'about'),
+  ('everyone', 'wants', 'happy music all the time'),
+  ('everyone', 'knows', 'It'),
+  ('It', 'would benefit', 'everyone'),
+  ('everyone', 'to be', 'A right'),
+  ('everyone', 'can', 'be'),
+  ('everyone',
+  'should be allowed',
+  'the right to Life , Liberty , and the Pursuit of Happiness'),
+  ('everyone', 'includes', 'all humans and all sentient animals')]
+
+*seq2seq*::
+
+  . . . . . . . . . . . . . <EOS>
+  that don that that . . . . . <EOS>
+  have have this . . . have <EOS>
+  don that that the . and . <EOS>
+  you that you . . . . . . . . . . . <EOS>
+  i can t . . . . . . . . . <EOS>
+  . . . . . . . . . . . . . . . . . . <EOS>
+  that are are . . . . that . . . . . . . . that . <EOS>
+  . . . the the . . <EOS>
+  . . . . that . . . . . . that . . <EOS>
+
+:Argument: Donald Trump is a good President. He says what he thinks and doesn't care about feelings.
+:Stance: PRO
+
+*Triples*::
+
+  [('Donald Trump core', 'will believe', 'in Donald Trump to the end'),
+  ('Donald Trump wife', 'hardly speaks', 'English even though')]
+
+*seq2seq*::
+
+  . . . . . . . . . . . . . . . . . . <EOS>
+  it doesn t . . . . . <EOS>
+  has has has . more . . more than . . . . . more than . . . <EOS>
+  . is . . . . . . . . . . . <EOS>
+  . you that you . more than . . . . . . . <EOS>
+  . is . . . . . . . . . . . . . <EOS>
+  . . . . . . . . . . . . . . . <EOS>
+  . . . . . . . . . . . <EOS>
+  . . . to to . to . . . to . <EOS>
+  . is . . . . . . . . . . . . . <EOS>
+
+:Argument: The USA should pull their troops from the Middle East. It's none of their business, they should let them figure out themselves.
+:Stance: CON
+
+*Triples*::
+
+  [('The US', "wo n't pull", 'out of Afghanistan in 2011'),
+  ('The US', 'trained', 'Chinese troops'),
+  ('The US', 'sends', 'a few troops'),
+  ('The economy', 'from directly challenging', 'The US'),
+  ('The US', 'did', 'it as a pretext'),
+  ('The US', 'took', 'it by force'),
+  ('The US', 'should not change', 'the metric system'),
+  ('The US', 'should ban', 'certain people of having guns'),
+  ('The US', 'should pay', 'for a wall'),
+  ('The US', 'refers', 'To')]
+
+*seq2seq*::
+
+  . . . . to . to . . to . . . <EOS>
+  you are not . . . . . . . . . . . . . . . . . . . . <EOS>
+  . . . . to . to . . <EOS>
+  all . . . . . . . . . . . . <EOS>
+  . . . . . . . . . . <EOS>
+  it would . . . . . . . . . . <EOS>
+  . . . . to . . to . . . . . <EOS>
+  . . . . . . . . . . . . . . <EOS>
+  . of the . of . . . . . to . . . <EOS>
+  all . . . . . . . . . . . . . . <EOS>
+
+:Argument: We must have some stricter controls on the content of entertainment that is viewed by teenagers. They might get violent and only think about murder.
+:Stance: CON
+
+*Triples*::
+
+  [('News programs that use pundits', 'are looking', 'for entertainment')]
+
+*seq2seq*::
+
+  . . . . to to . the . . . . to . . . <EOS>
+  . . . . . . . . . . . . . <EOS>
